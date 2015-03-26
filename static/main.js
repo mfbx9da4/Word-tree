@@ -1,15 +1,17 @@
 (function () {
 	var app = angular.module('app', []);
-	app.controller('MainCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
+	app.controller('MainCtrl', ['$scope', '$http', '$sce', '$location', function ($scope, $http, $sce, $location) {
 		window.sc = $scope;
+		var location = $location.absUrl();
+		location = location.substring(location.length-1) == '/' ? location.substring(0, location.length - 1) : location;
 
 		// Load tree
 		$scope.is_loading = true;
-		$http.get('/static/data/tree.json').success(function (data) {
+		$http.get(location + '/data/tree.json').success(function (data) {
 			$scope.is_loading = false;
 			$scope.tree = data;
 			// Load anagrams
-			$http.get('/static/data/anagrams.json').success(function (data) {
+			$http.get(location + '/data/anagrams.json').success(function (data) {
 				$scope.anagrams = data;
 			});
 		});
@@ -102,6 +104,7 @@
 				var anagrams = $scope.anagrams[key];
 				if (anagrams.length > biggest) {
 					biggest = anagrams.length;
+					console.log(key);
 					most_anagrams = key;
 				}
 			}
