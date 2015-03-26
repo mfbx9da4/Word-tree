@@ -1,17 +1,7 @@
 # Word tree
 
 ### Run
-Just set up run any simple server e.g.
-
-	ws
-
-or
-
-	python -m SimpleHTTPServer
-
-and visit
-
-	http://localhost:8000/static
+Run a server (using e.g. `ws` or `python -m SimpleHTTPServer`) in the root folder and visit `http://localhost:8000/static`
 
 ### Aim
 Some people (my girlfriend) often have problems remembering the difference between similarly spelt or sounding words.
