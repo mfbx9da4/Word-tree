@@ -1,5 +1,7 @@
 # Word tree
 
+### [Demo](http://mfbx9da4.github.io/projects/Word-tree/static/)
+
 ### Run
 Run a server (using e.g. `ws` or `python -m SimpleHTTPServer`) in the root folder and visit [http://localhost:8000/static](http://localhost:8000/static)
 
