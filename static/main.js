@@ -1,6 +1,6 @@
 (function () {
 	var app = angular.module('app', []);
-	app.controller('MainCtrl', ['$scope', '$http', '$sce', '$location', function ($scope, $http, $sce, $location) {
+	app.controller('MainCtrl', ['$scope', '$http', '$sce', '$location', '$timeout', function ($scope, $http, $sce, $location, $timeout) {
 		window.sc = $scope;
 		var location = $location.absUrl();
 		location = location.substring(location.length-1) == '/' ? location.substring(0, location.length - 1) : location;
@@ -76,10 +76,10 @@
 				$scope.title = data.parse && data.parse.title;
 				$scope.error = $scope.info.error;
 
-				var topElm = window.document.body;
-				if (topElm) {
-				    window.scrollTo(0, topElm.offsetTop);
-				}
+				// scroll to top
+			    $timeout(function () {
+				    window.document.querySelector('.wiki').scrollTop = 0;
+			    });
 			}).error(function (data) {
 				$scope.is_loading = false;
 				$scope.error = true;

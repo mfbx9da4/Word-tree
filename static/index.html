@@ -37,6 +37,12 @@
 		float: left;
 		color: #222;
 		padding-left: 24px;
+		height: 100%;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	.tree::-webkit-scrollbar {
+	    display: none;
 	}
 	.tree h2 {
 		border: 0;
@@ -55,6 +61,7 @@
 	.label {
 		padding-left: 24px;
 		cursor: pointer;
+		margin-right: 24px;
 	}
 	.label::selection {
 		background-color: transparent;
@@ -119,6 +126,8 @@
 		width: 50%;
 		float: left;
 		padding: 0 24px;
+		height: 100%;
+		overflow-y: scroll;
 	}
 
 	</style>
