@@ -1,5 +1,7 @@
 # Word prefix tree and anagram solver
 
+### [Demo](http://mfbx9da4.github.io/projects/Word-tree/static/)
+
 ### Aim
 Often people learning a foreign language have problems remembering the difference between similarly spelt or similarly sounding words.
 This project aims to help people disambiguate similarly spelt words.
