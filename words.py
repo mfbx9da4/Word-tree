@@ -24,27 +24,47 @@ class WordTree(object):
         """
         current = self.words
         word = word
-        for i, let in enumerate(word):
-            key = word[0:i + 1]
+        for i, letter in enumerate(word):
+            prefix = word[0:i + 1]
             if i + 1 == len(word):
-                current[key] = {'_': word}
+                current[prefix] = {'_': word}
             else:
-                current[key] = current.get(key, {})
-            current = current[key]
+                current[prefix] = current.get(prefix, {})
+            current = current[prefix]
 
 
-tree = WordTree()
-anagrams_dict = {}
-f = open("words")
-for word in f.xreadlines():
-    word = word.split('\n')[0].lower().decode('utf-8')
-    tree.update(word)
-
+def update_anagrams(anagrams_dict, word):
+    """
+    Use the sorted word as a hash to a list of anagrams
+    matching the sorted word.
+    """
+    # sort word
     sorted_word = ''.join(sorted(word)).replace("'", '')
+
+    # find existing anagrams of this word
     anagrams = anagrams_dict.get(sorted_word) or []
+
+    # include this word if it is not already listed
     if not anagrams.count(word):
         anagrams.append(word)
         anagrams_dict[sorted_word] = anagrams
+
+
+# open dictionary words file
+f = open("words")
+
+# init
+tree = WordTree()
+anagrams_dict = {}
+
+for word in f.xreadlines():
+    word = word.split('\n')[0].lower().decode('utf-8')
+
+    # update word tree
+    tree.update(word)
+
+    # update the anagrams dict
+    update_anagrams(anagrams_dict, word)
 
 out = open('static/data/tree.json', 'wr+')
 out.write(json.dumps(tree.words))

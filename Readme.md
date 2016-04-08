@@ -1,13 +1,11 @@
-# Word tree
+# Word prefix tree and anagram solver
+
+### Aim
+Often people learning a foreign language have problems remembering the difference between similarly spelt or similarly sounding words.
+This project aims to help people disambiguate similarly spelt words.
 
 ### Run
 Run a server (using e.g. `ws` or `python -m SimpleHTTPServer`) in the root folder and visit [http://localhost:8000/static](http://localhost:8000/static)
-
-### Aim
-Some people (e.g. my girlfriend) often have problems remembering the difference between similarly spelt or similarly sounding words.
-This project aims to help people disambiguate similarly spelt words.
-
-As a side challenge I also create an anagram solver.
 
 ### Method
 - `words.py` generates `tree.json` and `anagrams.json`.
