@@ -35,11 +35,15 @@ class WordTree(object):
 
 tree = WordTree()
 anagrams_dict = {}
+
+# Iterate all words in unix dict
 f = open("words")
 for word in f.xreadlines():
     word = word.split('\n')[0].lower().decode('utf-8')
     tree.update(word)
 
+    # normalize and sort each word
+    # anagrams will have the same sorted word
     sorted_word = ''.join(sorted(word)).replace("'", '')
     anagrams = anagrams_dict.get(sorted_word) or []
     if not anagrams.count(word):

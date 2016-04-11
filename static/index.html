@@ -177,9 +177,17 @@
     <!-- This template is recursively called -->
 	<script type="text/ng-template" id="field_renderer.html">
 		<!-- Subtree -->
-	    <div class="label letter" ng-class="{'open': subtree.open}" ng-click="toggleSubtree(subtree)" ng-if="key !== 'open' && key !== '_'">{{key}}</div>
+	    <div class="label letter"
+	    	ng-class="{'open': subtree.open}" ng-click="toggleSubtree(subtree)"
+	    	ng-if="key !== 'open' && key !== '_'">
+	    		{{key}}
+		</div>
         <div class="subtree" ng-if="key !== '_' && subtree.open">
-        	<div class="indent" ng-class="{'word-container': subtree.length}" ng-repeat="(key, subtree) in subtree" ng-include="'field_renderer.html'"></div>
+        	<div class="indent"
+        		 ng-class="{'word-container': subtree.length}"
+        		 ng-repeat="(key, subtree) in subtree"
+        		 ng-include="'field_renderer.html'">
+    		</div>
         </div>
 
         <!-- Word -->
