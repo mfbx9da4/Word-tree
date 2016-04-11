@@ -138,7 +138,7 @@
 	<div class="tree">
 		<header>
 			<h2>Navigate through the English dictionary tree to disambiguate similiarly spelt words.</h2>
-			<ul>
+			<ul ng-show="tree">
 				<li>
 					To navigate you can click through the tree or type here <input type="text" ng-model="searchText" ng-keypress="onType($event)"
 												 ng-change="search()" placeholder="aardvark">
