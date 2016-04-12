@@ -89,7 +89,7 @@
 		$scope.search = function () {
 			var current = $scope.tree;
 			for (var i = 0; i < $scope.searchText.length; i ++) {
-				var path = $scope.searchText.substring(0, i + 1);
+				var path = $scope.searchText[i];
 				if (!current[path]) {
 					return;
 				}

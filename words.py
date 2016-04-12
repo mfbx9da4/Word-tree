@@ -3,8 +3,12 @@
 import simplejson as json
 
 
-class WordTree(object):
-    """WordTree contains the letter paths of words given to it"""
+class DictionaryTrie(object):
+    """
+    DictionaryTrie contains the prefixes of words given to it.
+    Each node is a letter. More about tries here
+    https://en.wikipedia.org/wiki/Trie
+    """
     def __init__(self):
         self.words = {}
 
@@ -19,18 +23,16 @@ class WordTree(object):
         (_ is used because it is not a word in the dictionary)
 
         e.g. the example word "happy" becomes
-            {'h': {'ha': {'hap': {'happ': {'happy': {'_': 'happy'}}}}}}
+            {'h': {'a': {'p': {'p': {'y': {'_': 'happy'}}}}}}
 
         """
         current = self.words
-        word = word
         for i, letter in enumerate(word):
-            prefix = word[0:i + 1]
             if i + 1 == len(word):
-                current[prefix] = {'_': word}
+                current[letter] = {'_': word}
             else:
-                current[prefix] = current.get(prefix, {})
-            current = current[prefix]
+                current[letter] = current.get(letter, {})
+            current = current[letter]
 
 
 def update_anagrams(anagrams_dict, word):
@@ -54,20 +56,20 @@ def update_anagrams(anagrams_dict, word):
 f = open("words")
 
 # init
-tree = WordTree()
+trie = DictionaryTrie()
 anagrams_dict = {}
 
 for word in f.xreadlines():
     word = word.split('\n')[0].lower().decode('utf-8')
 
-    # update word tree
-    tree.update(word)
+    # update word trie
+    trie.update(word)
 
     # update the anagrams dict
     update_anagrams(anagrams_dict, word)
 
 out = open('static/data/tree.json', 'wr+')
-out.write(json.dumps(tree.words))
+out.write(json.dumps(trie.words))
 out.close()
 
 out = open('static/data/anagrams.json', 'wr+')

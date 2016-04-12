@@ -11,7 +11,7 @@ Run a server (using e.g. `ws` or `python -m SimpleHTTPServer`) in the root folde
 
 ### Method
 - `words.py` generates `tree.json` and `anagrams.json`.
-- `tree.json` contains a letter by letter tree of all the words in the dictionary.
+- `tree.json` contains a letter by letter prefix tree (trie) of all the words in the dictionary.
 - `anagrams.json` contains all angrams in the dictionary, indexed by the sorted strings.
 - `main.js` loads `tree.json` and `anagrams.json` into memory.
 - `index.html` contains a recursive template for displaying the tree.
